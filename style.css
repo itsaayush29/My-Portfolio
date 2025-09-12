@@ -398,7 +398,7 @@ section .title::after {
   width: 280px;
   object-fit: fill;
   border-radius: 10px;
-  border: 2px solid crimson;
+  /* border: 2px solid crimson; */
   transition: all 0.3s ease;
 }
 .projects .carousel .card:hover img {
