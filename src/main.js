@@ -41,6 +41,22 @@ function App() {
   const [wordIndex, setWordIndex] = useState(0);
   const words = useMemo(() => ['Software Developer', 'Frontend Engineer'], []);
 
+  const rotatingWord = (keyPrefix) => e(
+    'span',
+    { className: 'relative inline-flex min-w-52 align-middle', key: `${keyPrefix}-wrap` },
+    words.map((word, index) => e(
+      'span',
+      {
+        className: `border-r-2 border-accent pr-1 font-semibold text-accent transition-all duration-500 ease-in-out ${
+          index === wordIndex ? 'relative opacity-100 translate-y-0' : 'absolute left-0 top-0 opacity-0 -translate-y-1'
+        }`,
+        key: `${keyPrefix}-${word}`,
+        'aria-hidden': index !== wordIndex,
+      },
+      word
+    ))
+  );
+
   useEffect(() => {
     const onScroll = () => setShowTop(window.scrollY > 450);
     window.addEventListener('scroll', onScroll);
@@ -71,7 +87,7 @@ function App() {
         e('div', { className: 'space-y-5', key: 'left' }, [
           e('p', { className: 'text-lg text-slate-300', key: 'p1' }, "Hello 👋 I'm"),
           e('h1', { className: 'text-5xl font-black leading-tight text-white md:text-6xl', key: 'h1' }, 'Aayush Gupta'),
-          e('p', { className: 'text-xl text-slate-200', key: 'p2' }, ['And I\'m a ', e('span', { className: 'inline-block min-w-52 border-r-2 border-accent pr-1 font-semibold text-accent', key: 'w' }, words[wordIndex])]),
+          e('p', { className: 'text-xl text-slate-200', key: 'p2' }, ['And I\'m a ', rotatingWord('home-role')]),
           e('a', { href: 'https://www.linkedin.com/in/aayush-gupta-9b25a421a/', target: '_blank', rel: 'noreferrer', className: 'inline-block rounded-lg bg-accent px-6 py-3 font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5', key: 'hire' }, "I'm looking to hire")
         ]),
         e('img', { src: './images/bannernew.jpg', alt: 'Portfolio Banner', className: 'mx-auto h-60 w-full max-w-md rounded-2xl object-contain shadow-2xl md:h-80 md:max-w-lg', key: 'img' })
@@ -85,7 +101,7 @@ function App() {
             e('div', { className: 'flex flex-wrap gap-2', key: 'social' }, socialLinks.map(([label, href]) => e('a', { key: label, href, target: '_blank', rel: 'noreferrer', className: 'rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-accent hover:text-accent' }, label)))
           ]),
           e('div', { className: 'space-y-4', key: 'col2' }, [
-            e('h3', { className: 'text-2xl font-semibold text-white', key: 'h3' }, ["I'm Aayush and I'm a ", e('span', { className: 'text-accent', key: 's' }, words[wordIndex])]),
+            e('h3', { className: 'text-2xl font-semibold text-white', key: 'h3' }, ["I'm Aayush and I'm a ", rotatingWord('about-role')]),
             e('p', { className: 'max-w-3xl text-slate-300 leading-7', key: 'desc' }, 'I am a dedicated software developer focused on creating attractive and user-friendly websites. I am passionate about translating design concepts into interactive digital experiences and continuously improving my skill set to stay updated with the latest industry trends.')
           ])
         ])
