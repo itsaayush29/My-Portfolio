@@ -89,6 +89,47 @@ function App() {
         ])
       ]),
 
+      e('section', { id: 'experience', className: 'mx-auto max-w-6xl px-6 py-16', key: 'experience' }, [
+        e('h2', { className: sectionTitle, key: 'title' }, '💼 Experience'),
+        e('div', { className: 'mt-8 space-y-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-6 md:p-8', key: 'card' }, [
+          e('div', { className: 'space-y-2', key: 'head' }, [
+            e('h3', { className: 'text-2xl font-semibold text-white', key: 'role' }, 'Software Test Engineer'),
+            e('p', { className: 'text-slate-300', key: 'company' }, 'Globussoft | June 2025 – Present'),
+            e('p', { className: 'text-slate-300 leading-7', key: 'summary' }, 'Currently working as a Software Test Engineer, contributing to the quality assurance of products like EmpMonitor, PowerAdSpy, and AdGPT. I am responsible for ensuring stable, high-quality releases through comprehensive manual and automated testing.')
+          ]),
+          e('div', { className: 'space-y-4', key: 'contributions' }, [
+            e('h4', { className: 'text-xl font-semibold text-accent', key: 'title' }, '🔹 Key Responsibilities & Contributions'),
+            e('ul', { className: 'list-disc space-y-3 pl-6 text-slate-300 leading-7', key: 'list' }, [
+              e('li', { key: 'end' }, 'Performed end-to-end testing including functional, UI/UX, back-end, and API validation.'),
+              e('li', { key: 'cases' }, 'Designed, wrote, and executed 500+ test cases, identifying and reporting 1000+ bugs, significantly improving product stability.'),
+              e('li', { key: 'features' }, 'Conducted thorough testing of new features across both front-end UI and back-end APIs, followed by post-deployment production verification.'),
+              e('li', { key: 'automation' }, 'Implemented automation testing using Playwright, reducing repetitive manual efforts and improving testing efficiency and reliability.'),
+              e('li', { key: 'postman' }, [
+                'Performed API and back-end testing using Postman, including:',
+                e('ul', { className: 'mt-2 list-disc space-y-2 pl-6', key: 'sublist' }, [
+                  e('li', { key: 'json' }, 'JSON response validation'),
+                  e('li', { key: 'status' }, 'Status code verification'),
+                  e('li', { key: 'workflow' }, 'API workflow testing'),
+                  e('li', { key: 'sql' }, 'SQL queries for database validation'),
+                  e('li', { key: 'integrity' }, 'Data integrity checks')
+                ])
+              ]),
+              e('li', { key: 'support' }, 'Provided technical support to customers and clients by identifying, troubleshooting, and resolving product-related issues.')
+            ])
+          ]),
+          e('div', { className: 'space-y-4', key: 'tools' }, [
+            e('h4', { className: 'text-xl font-semibold text-accent', key: 'title' }, '🔹 Tools & Technologies'),
+            e('ul', { className: 'list-disc space-y-2 pl-6 text-slate-300 leading-7', key: 'list' }, [
+              e('li', { key: 'playwright' }, 'Automation: Playwright'),
+              e('li', { key: 'api' }, 'API Testing: Postman'),
+              e('li', { key: 'db' }, 'Database: SQL'),
+              e('li', { key: 'validation' }, 'Validation: JSON, Status Codes, Data Integrity Checks'),
+              e('li', { key: 'types' }, 'Testing Types: Functional, Regression, UI/UX, API, Back-end Testing')
+            ])
+          ])
+        ])
+      ]),
+
       e('section', { id: 'skills', className: 'bg-slate-900/40 py-16', key: 'skills' }, e('div', { className: 'mx-auto max-w-6xl px-6' }, [
         e('h2', { className: sectionTitle, key: 'title' }, 'My skills'),
         e('div', { className: 'mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5', key: 'icons' }, skillIcons.map(([file, label, href]) => e('a', { key: label, href, target: '_blank', rel: 'noreferrer', className: 'group rounded-xl border border-slate-800 bg-slate-900/70 p-4 text-center transition hover:-translate-y-1 hover:border-accent' }, [e('img', { src: `./images/${file}`, alt: label, className: 'mx-auto h-16 w-16 object-contain', key: 'img' }), e('p', { className: 'mt-2 text-sm text-slate-300 group-hover:text-accent', key: 't' }, label)])))
