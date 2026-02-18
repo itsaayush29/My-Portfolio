@@ -73,14 +73,14 @@ function App() {
           e('p', { className: 'text-xl text-slate-200', key: 'p2' }, ['And I\'m a ', e('span', { className: 'inline-block min-w-52 border-r-2 border-accent pr-1 font-semibold text-accent', key: 'w' }, words[wordIndex])]),
           e('a', { href: 'https://www.linkedin.com/in/aayush-gupta-9b25a421a/', target: '_blank', rel: 'noreferrer', className: 'inline-block rounded-lg bg-accent px-6 py-3 font-semibold text-slate-950 shadow-glow transition hover:-translate-y-0.5', key: 'hire' }, "I'm looking to hire")
         ]),
-        e('img', { src: './images/bannernew.jpg', alt: 'Portfolio Banner', className: 'h-72 w-full rounded-2xl object-cover shadow-2xl md:h-full', key: 'img' })
+        e('img', { src: './images/bannernew.jpg', alt: 'Portfolio Banner', className: 'mx-auto h-60 w-full max-w-md rounded-2xl object-contain shadow-2xl md:h-80 md:max-w-lg', key: 'img' })
       ]),
 
       e('section', { id: 'about', className: 'mx-auto max-w-6xl px-6 py-16', key: 'about' }, [
         e('h2', { className: sectionTitle, key: 'title' }, 'About me'),
         e('div', { className: 'mt-8 grid gap-8 md:grid-cols-[280px_1fr]', key: 'grid' }, [
           e('div', { className: 'space-y-5', key: 'col1' }, [
-            e('img', { src: './images/Aayush Gupta.JPG', alt: 'Aayush Gupta', className: 'w-full rounded-2xl object-cover', key: 'aimg' }),
+            e('img', { src: './images/Aayush Gupta.JPG', alt: 'Aayush Gupta', className: 'mx-auto h-64 w-full max-w-[260px] rounded-2xl object-contain', key: 'aimg' }),
             e('div', { className: 'flex flex-wrap gap-2', key: 'social' }, socialLinks.map(([label, href]) => e('a', { key: label, href, target: '_blank', rel: 'noreferrer', className: 'rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-accent hover:text-accent' }, label)))
           ]),
           e('div', { className: 'space-y-4', key: 'col2' }, [
@@ -138,7 +138,7 @@ function App() {
 
       e('section', { id: 'projects', className: 'mx-auto max-w-6xl px-6 py-16', key: 'projects' }, [
         e('h2', { className: sectionTitle, key: 'title' }, 'My Projects'),
-        e('div', { className: 'mt-8 grid gap-6 md:grid-cols-3', key: 'cards' }, projects.map(([title, image, tag, href]) => e('article', { key: title, className: 'overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 transition hover:-translate-y-1 hover:border-accent' }, e('a', { href, target: '_blank', rel: 'noreferrer' }, [e('img', { src: `./images/${image}`, alt: title, className: 'h-48 w-full object-cover', key: 'img' }), e('div', { className: 'space-y-2 p-4', key: 'txt' }, [e('h3', { className: 'font-semibold text-white', key: 'h' }, title), e('p', { className: 'text-sm text-accent', key: 'p' }, tag)])]))))
+        e('div', { className: 'mt-8 grid gap-6 md:grid-cols-3', key: 'cards' }, projects.map(([title, image, tag, href]) => e('article', { key: title, className: 'overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/70 transition hover:-translate-y-1 hover:border-accent' }, e('a', { href, target: '_blank', rel: 'noreferrer' }, [e('div', { className: 'flex h-52 items-center justify-center bg-slate-950/70 p-3', key: 'frame' }, e('img', { src: `./images/${image}`, alt: title, className: 'h-full w-full object-contain', key: 'img' })), e('div', { className: 'space-y-2 p-4', key: 'txt' }, [e('h3', { className: 'font-semibold text-white', key: 'h' }, title), e('p', { className: 'text-sm text-accent', key: 'p' }, tag)])]))))
       ]),
 
       e('section', { id: 'contact', className: 'bg-slate-900/40 py-16', key: 'contact' }, e('div', { className: 'mx-auto grid max-w-6xl gap-10 px-6 md:grid-cols-2' }, [
