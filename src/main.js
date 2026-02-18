@@ -95,10 +95,12 @@ function App() {
 
       e('section', { id: 'about', className: 'mx-auto max-w-6xl px-6 py-16', key: 'about' }, [
         e('h2', { className: sectionTitle, key: 'title' }, 'About me'),
-        e('div', { className: 'mt-8 grid gap-8 md:grid-cols-[280px_1fr]', key: 'grid' }, [
-          e('div', { className: 'space-y-5', key: 'col1' }, [
-            e('img', { src: './images/Aayush Gupta.png', alt: 'Aayush Gupta', className: 'mx-auto h-64 w-full max-w-[260px] rounded-2xl object-contain', key: 'aimg' }),
-            e('div', { className: 'flex flex-wrap gap-2', key: 'social' }, socialLinks.map(([label, href]) => e('a', { key: label, href, target: '_blank', rel: 'noreferrer', className: 'rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-accent hover:text-accent' }, label)))
+        e('div', { className: 'mt-8 grid items-start gap-8 md:grid-cols-[300px_1fr]', key: 'grid' }, [
+          e('div', { className: 'space-y-5 md:sticky md:top-24', key: 'col1' }, [
+            e('div', { className: 'mx-auto w-full max-w-[280px] overflow-hidden rounded-3xl border border-slate-700/60 bg-slate-900/60 p-2 shadow-2xl shadow-slate-950/70', key: 'frame' },
+              e('img', { src: './images/Aayush Gupta.png', alt: 'Aayush Gupta', className: 'h-72 w-full rounded-2xl object-cover object-top', key: 'aimg' })
+            ),
+            e('div', { className: 'flex flex-wrap justify-center gap-2 md:justify-start', key: 'social' }, socialLinks.map(([label, href]) => e('a', { key: label, href, target: '_blank', rel: 'noreferrer', className: 'rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-accent hover:text-accent' }, label)))
           ]),
           e('div', { className: 'space-y-4', key: 'col2' }, [
             e('h3', { className: 'text-2xl font-semibold text-white', key: 'h3' }, ["I'm Aayush and I'm a ", rotatingWord('about-role')]),
