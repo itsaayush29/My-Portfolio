@@ -38,23 +38,25 @@ const projects = [
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showTop, setShowTop] = useState(false);
+  const words = useMemo(() => ['Frontend Developer', 'Software Developer'], []);
   const [wordIndex, setWordIndex] = useState(0);
-  const words = useMemo(() => ['Software Developer', 'Frontend Engineer'], []);
+  const [typedLength, setTypedLength] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const rotatingWord = (keyPrefix) => e(
     'span',
-    { className: 'relative inline-flex min-w-52 align-middle', key: `${keyPrefix}-wrap` },
-    words.map((word, index) => e(
+    { className: 'inline-flex min-w-[19ch] items-baseline whitespace-nowrap align-baseline', key: `${keyPrefix}-wrap` },
+    [
+      e(
       'span',
       {
-        className: `border-r-2 border-accent pr-1 font-semibold text-accent transition-all duration-500 ease-in-out ${
-          index === wordIndex ? 'relative opacity-100 translate-y-0' : 'absolute left-0 top-0 opacity-0 -translate-y-1'
-        }`,
-        key: `${keyPrefix}-${word}`,
-        'aria-hidden': index !== wordIndex,
+        className: 'font-semibold text-accent',
+        key: `${keyPrefix}-text`,
       },
-      word
-    ))
+      words[wordIndex].slice(0, typedLength)
+      ),
+      e('span', { className: 'ml-1 inline-block h-[1em] w-0.5 animate-pulse bg-accent', key: `${keyPrefix}-cursor`, 'aria-hidden': true })
+    ]
   );
 
   useEffect(() => {
@@ -65,9 +67,25 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => setWordIndex((prev) => (prev + 1) % words.length), 1800);
-    return () => clearInterval(interval);
-  }, [words]);
+    const currentWord = words[wordIndex];
+
+    if (!isDeleting && typedLength === currentWord.length) {
+      const pauseTimeout = setTimeout(() => setIsDeleting(true), 1000);
+      return () => clearTimeout(pauseTimeout);
+    }
+
+    if (isDeleting && typedLength === 0) {
+      setIsDeleting(false);
+      setWordIndex((prev) => (prev + 1) % words.length);
+      return undefined;
+    }
+
+    const typingTimeout = setTimeout(() => {
+      setTypedLength((prev) => prev + (isDeleting ? -1 : 1));
+    }, isDeleting ? 55 : 95);
+
+    return () => clearTimeout(typingTimeout);
+  }, [isDeleting, typedLength, wordIndex, words]);
 
   const e = React.createElement;
   const sectionTitle = 'text-3xl md:text-4xl font-bold text-white';
