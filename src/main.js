@@ -26,6 +26,7 @@ const skillIcons = [
   ['c-logo.png', 'C++', 'https://www.w3schools.com/cpp/'],
   ['mysql-logo-1.png', 'MySQL', 'https://www.mysql.com/'],
   ['python-logo.png', 'Python', 'https://www.python.org/'],
+  ['playwright.svg', 'Playwright', 'https://playwright.dev/'],
 ];
 
 const projects = [
