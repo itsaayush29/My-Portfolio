@@ -97,7 +97,7 @@ function App() {
         e('h2', { className: sectionTitle, key: 'title' }, 'About me'),
         e('div', { className: 'mt-8 grid gap-8 md:grid-cols-[280px_1fr]', key: 'grid' }, [
           e('div', { className: 'space-y-5', key: 'col1' }, [
-            e('img', { src: './images/Aayush Gupta.JPG', alt: 'Aayush Gupta', className: 'mx-auto h-64 w-full max-w-[260px] rounded-2xl object-contain', key: 'aimg' }),
+            e('img', { src: './images/Aayush Gupta.png', alt: 'Aayush Gupta', className: 'mx-auto h-64 w-full max-w-[260px] rounded-2xl object-contain', key: 'aimg' }),
             e('div', { className: 'flex flex-wrap gap-2', key: 'social' }, socialLinks.map(([label, href]) => e('a', { key: label, href, target: '_blank', rel: 'noreferrer', className: 'rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-300 transition hover:border-accent hover:text-accent' }, label)))
           ]),
           e('div', { className: 'space-y-4', key: 'col2' }, [
